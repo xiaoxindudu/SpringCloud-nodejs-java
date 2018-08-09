@@ -1,0 +1,49 @@
+用户验证地址：139.224.138.101:8011/signin
+
+用户登录成功：
+{"head":{"error_code":0,"error_msg":"本系统登录成功"},"body":
+[{"pid":1,"systemId":"1","privilegeId":100000,
+"privilegeName":"业务查询",
+"fatherId":null,"privilegeUrl":"/menu",
+"privilegeDetail": "*","rcd_crt_user":null,"rct_mod_user":null,
+"rcd_crt_time":"2017-11-01T08:22:57.000Z",
+"rcd_mod_time":"2017-11-01T08:22:57.000Z",
+"rcd_end_time":"9999-12-30T16:00:00.000Z"}],
+”SecurityNo”:XXSJHKSJHJDJSLDJKL}
+
+如果登录失败不会返回SecurityNo，成功后的所有请求JSON中必须带上次返回的SecurityNo这个项目。
+用户登录失败：
+{"head":{"error_code":99,"error_msg":"用户名或者密码错误"}}
+
+
+查询保单信息地址：139.224.138.101:8011/getPolicyInfo
+
+查询结果返回报文格式（有数据）：
+{"head":{"error_code":0,"error_msg":""},"body":
+[{"policyInfo":{"policyNo":"61100990600052017A066368",
+"serialNo":1,"startDate":"2017-10-23T16:00:00.000Z",
+"subject":"{\"arrivalTime\":\"2017-10-24 22:40:00\",\"flightNo\":\"CZ6318\",\"departureCity\":\"哈尔滨\",\"departureTime\":\"2017-10-24 16:35:00\",\"arrivalCity\":\"南宁\"}",
+"idName":"付丽丽","idNo":"23108419820313172X",
+"flightNo":"CZ6318",
+"departureTime":"2017-10-24T08:35:00.000Z",
+"arrivalTime":"2017-10-24T14:40:00.000Z",
+"departureCity":"哈尔滨",
+"arrivalCity":"南宁","status":"6",
+"extend1":"errCode:00   ||   errMsg:成功","endorseNo":null,
+"rcd_crt_time":"2017-10-18T08:32:15.000Z",
+"rcd_mod_time":"2017-10-18T08:32:15.000Z",
+"loadtime":"9999-12-30T16:00:00.000Z"},
+"claim":null},
+{"policyInfo":{"policyNo":"61100990600052017A323325",
+"serialNo":1,"startDate":"2017-11-01T16:00:00.000Z",
+"subject":"{\"arrivalTime\":\"2017-11-02 13:55:00\",
+\"flightNo\":\"ZH9243\",\"departureCity\":\"南宁\",\"departureTime\":\"2017-11-02 07:00:00\",\"arrivalCity\":\"哈尔滨\"}",
+"idName":"付丽丽","idNo":"23108419820313172X","flightNo":"ZH9243",
+"departureTime":"2017-11-01T23:00:00.000Z","arrivalTime":"2017-11-02T05:55:00.000Z","departureCity":"南宁","arrivalCity":"哈尔滨",
+"status":"6","extend1":"errCode:00   ||   errMsg:undefined",
+"endorseNo":null,"rcd_crt_time":"2017-10-29T23:44:50.000Z",
+"rcd_mod_time":"2017-10-29T23:44:51.000Z",
+"loadtime":"9999-12-30T16:00:00.000Z"},"claim":null}]}
+
+查询结果返回报文格式（无数据）：
+{"head":{"error_code":1,"error_msg":"无相关信息"},"body":[]}

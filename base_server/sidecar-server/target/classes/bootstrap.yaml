@@ -1,0 +1,20 @@
+server:
+  port: ${PORT:8741}
+spring:
+  application:
+    name: sidecar-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8700/eureka/}
+sidecar:
+  port: 8905
+  home-page-uri: http://localhost:${sidecar.port}/
+  health-uri: http://localhost:${sidecar.port}/health
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false

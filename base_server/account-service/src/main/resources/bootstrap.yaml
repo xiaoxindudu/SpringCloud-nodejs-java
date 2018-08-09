@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:8720}
+spring:
+  application:
+    name: account-service
+eureka:
+  instance:
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8700/eureka/}
+    registerWithEureka: true
+    fetchRegistry: true
+ribbon:
+  eureka:
+    enabled: true
+
+#熔断
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 
+#log4j
+logging:
+  config: classpath:log4j2.xml
+
+#接口文档  
+swagger:
+    basepackage: com.aibao.controller #扫描api包路径
+    service:
+        name: sendinfo product #api名称
+        description: 后台管理系统接口 #api描述
+        developer: 小新 #api开发
