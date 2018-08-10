@@ -1,0 +1,7 @@
+com\aibao\UserServiceApplication.class
+com\aibao\bean\Systembean.class
+com\aibao\bean\Book.class
+com\aibao\controller\UserController.class
+com\aibao\Swagger2.class
+com\aibao\fegin\BookFeignClient.class
+com\aibao\bean\User.class

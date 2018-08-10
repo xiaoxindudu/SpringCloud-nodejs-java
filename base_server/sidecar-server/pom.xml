@@ -8,8 +8,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>sidecar-server</artifactId>
-
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -52,7 +50,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>sidecar-server</finalName> 
+		<finalName>sidecar-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

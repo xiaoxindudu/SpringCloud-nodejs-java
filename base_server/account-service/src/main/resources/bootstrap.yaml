@@ -4,9 +4,13 @@ spring:
   application:
     name: account-service
 eureka:
-  instance:
-    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
-  client:
+  instance: 
+    # 每间隔10s，向服务端发送一次心跳，证明自己依然”存活“
+    lease-renewal-interval-in-seconds: 10
+    # 告诉服务端，如果我20s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+    lease-expiration-duration-in-seconds: 20
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html 
+  client: 
     serviceUrl:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8700/eureka/}
     registerWithEureka: true
