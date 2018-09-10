@@ -3,16 +3,13 @@ package com.aibao.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aibao.bean.User;
+import com.aibao.entity.User;
 import com.aibao.fegin.BookFeignClient;
 
 import io.swagger.annotations.Api;
@@ -31,8 +28,8 @@ public class UserController {
 
 	private Logger logger =  LogManager.getLogger(this.getClass());
 	
-    @Autowired
-    private DiscoveryClient discoveryClient;
+//    @Autowired
+//    private DiscoveryClient discoveryClient;
 
     @Autowired
     private  BookFeignClient bookFeignClient;
@@ -73,14 +70,5 @@ public class UserController {
         }
     }
 
-    /**
-     * 本地服务实例的信息
-     * @return
-     */
-    @GetMapping("/info")
-    public ServiceInstance showInfo() {
-        ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
-        return localServiceInstance;
-    }
 }
 

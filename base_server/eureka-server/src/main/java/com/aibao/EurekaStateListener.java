@@ -31,7 +31,7 @@ public class EurekaStateListener {
  
     @EventListener
     public void listen(EurekaInstanceRenewedEvent event) {
-        logger.info("服务{}进行续约", event.getServerId() +"  "+ event.getAppName());
+        //logger.info("服务{}进行续约", event.getServerId() +"  "+ event.getAppName());
     }
  
     @EventListener

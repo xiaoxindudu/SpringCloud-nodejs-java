@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8741}
+  port: ${PORT:8800}
 spring:
   application:
     name: sidecar-server
@@ -9,13 +9,15 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     # 告诉服务端，如果我20s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
     lease-expiration-duration-in-seconds: 20
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8700/eureka/}
 sidecar:
   port: 8905
-  home-page-uri: http://localhost:${sidecar.port}/
-  health-uri: http://localhost:${sidecar.port}/health
+  home-page-uri: http://${spring.cloud.client.ip-address}:${sidecar.port}/
+  health-uri: http://${spring.cloud.client.ip-address}:${sidecar.port}/health
 
 hystrix:
   command:
@@ -23,3 +25,7 @@ hystrix:
       execution:
         timeout:
           enabled: false
+#zuul的跨域忽略配置 需要忽略的头部信息，不在传播到其他服务
+zuul: 
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken

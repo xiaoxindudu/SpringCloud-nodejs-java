@@ -9,15 +9,22 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     # 告诉服务端，如果我20s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
     lease-expiration-duration-in-seconds: 20
-    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html 
+    status-page-url: http://wfw-01:${server.port}/swagger-ui.html 
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
   client: 
     serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8700/eureka/}
+      defaultZone: ${EUREKA_SERVICE_URL:http://wfw-01:8700/eureka/}
     registerWithEureka: true
     fetchRegistry: true
 ribbon:
   eureka:
     enabled: true
+  #超时  
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  MaxAutoRetrie: 0
+  MaxAutoRetriesNextServer: 1 
 
 #熔断
 hystrix:
@@ -26,15 +33,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 5000 
+            timeoutInMilliseconds: 10000 
 #log4j
 logging:
-  config: classpath:log4j2.xml
-
-#接口文档  
-swagger:
-    basepackage: com.aibao.controller #扫描api包路径
-    service:
-        name: sendinfo product #api名称
-        description: 后台管理系统接口 #api描述
-        developer: 小新 #api开发
+  config: classpath:log4j2.yml

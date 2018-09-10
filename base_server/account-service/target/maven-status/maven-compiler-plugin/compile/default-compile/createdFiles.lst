@@ -1,7 +1,10 @@
-com\aibao\UserServiceApplication.class
-com\aibao\bean\Systembean.class
-com\aibao\bean\Book.class
+com\aibao\SwaggerConfig.class
+com\aibao\entity\BatchDataImportEntity.class
+com\aibao\AccountServiceApplication.class
+com\aibao\controller\BatchDataImportController.class
 com\aibao\controller\UserController.class
-com\aibao\Swagger2.class
+com\aibao\entity\User.class
+com\aibao\entity\BaseEntity.class
+com\aibao\entity\Book.class
 com\aibao\fegin\BookFeignClient.class
-com\aibao\bean\User.class
+com\aibao\fegin\BatchDataImportFegin.class

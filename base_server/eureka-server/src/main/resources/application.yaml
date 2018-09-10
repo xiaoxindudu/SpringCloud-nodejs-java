@@ -12,7 +12,9 @@ eureka:
   instance: 
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    hostname: localhost   
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    hostname: localhost  
   server: 
-    #enableSelfPreservation: false
-    eviction-interval-timer-in-ms: 5000
+    enableSelfPreservation: false
+    #eviction-interval-timer-in-ms: 60000
